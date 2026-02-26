@@ -164,4 +164,6 @@ off_t ngx_chain_coalesce_file(ngx_chain_t **in, off_t limit);
 
 ngx_chain_t *ngx_chain_update_sent(ngx_chain_t *in, off_t sent);
 
+void combine_tag(void **a, void *b);
+
 #endif /* _NGX_BUF_H_INCLUDED_ */

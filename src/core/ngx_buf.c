@@ -312,3 +312,17 @@ ngx_chain_update_sent(ngx_chain_t *in, off_t sent)
 
     return in;
 }
+
+
+void
+combine_tag(void **a, void *b)
+{
+    ngx_uint_t  x, y, c;
+
+    x = (ngx_uint_t) (uintptr_t) *a;
+    y = (ngx_uint_t) (uintptr_t) b;
+    c = NGX_PTR_SIZE == 4 ? 0x9e3779b9UL : 0x9e3779b97f4a7c15ULL ;
+
+    x ^= y + c + (x << 6) + (x >> 2);
+    *a = (void *) (uintptr_t) x;
+}
